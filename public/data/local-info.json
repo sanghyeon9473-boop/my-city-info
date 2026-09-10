@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-09-11",
+  "lastUpdated": "2026-09-10",
   "source": "공공데이터포털 (data.go.kr)",
   "items": [
     {
@@ -95,6 +95,21 @@
       "summary": "소득과 재산이 적은 근로소득자에게 근로장려금을, 자녀가 있을 경우 자녀장려금 지급",
       "link": "https://www.gov.kr/portal/rcvfvrSvc/dtlEx/105100000001",
       "url": "https://www.gov.kr/portal/rcvfvrSvc/dtlEx/105100000001"
+    },
+    {
+      "id": "116010000001",
+      "name": "주택금융공사 월세자금보증",
+      "category": "혜택",
+      "categoryLabel": "지원금/혜택",
+      "startDate": "2024-05-15",
+      "endDate": "상시",
+      "location": "한국주택금융공사",
+      "target": "보증금 1억원 이하 및 월세 60만원 이하의 월세 계약을 체결한 주택도시기금 주거안정 월세대출 대상자 (취업준비생, 사회초년생 등 우대)",
+      "summary": "월세 계약을 체결한 주택도시기금 주거안정 월세대출 대상자에게 최대 1,152만원까지 월세자금 보증 지원",
+      "link": "https://www.gov.kr/portal/rcvfvrSvc/dtlEx/116010000001",
+      "badge": "최대 1,152만원 보증",
+      "url": "https://www.gov.kr/portal/rcvfvrSvc/dtlEx/116010000001"
     }
-  ]
+  ],
+  "lastPageChecked": 2
 }
