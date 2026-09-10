@@ -24,8 +24,68 @@ interface CityData {
 const cityData = cityDataRaw as CityData;
 
 export default function Home() {
-  const events = cityData.items.filter((item) => item.category === "event");
+  // 오늘 날짜 기준으로 행사 상태(D-Day, 진행 중, 행사 종료)를 계산하는 직관적인 함수
+  const getEventStatus = (startDate: string, endDate: string, defaultBadge?: string) => {
+    const todayStr = new Date().toISOString().split("T")[0];
+    const today = new Date(todayStr).getTime();
+    const start = new Date(startDate).getTime();
+    const end = new Date(endDate).getTime();
+    const oneDay = 1000 * 60 * 60 * 24;
+
+    if (today > end) {
+      return {
+        label: "행사 종료",
+        className: "bg-stone-100 text-stone-500 border-stone-200",
+        isPast: true,
+      };
+    }
+
+    if (today >= start && today <= end) {
+      return {
+        label: "진행 중",
+        className: "bg-emerald-50 text-emerald-700 border-emerald-200 font-bold",
+        isPast: false,
+      };
+    }
+
+    const diffDays = Math.ceil((start - today) / oneDay);
+    if (diffDays === 0) {
+      return {
+        label: "오늘 진행",
+        className: "bg-rose-50 text-rose-600 border-rose-200 font-bold",
+        isPast: false,
+      };
+    } else if (diffDays <= 7) {
+      return {
+        label: `D-${diffDays} 임박`,
+        className: "bg-rose-50 text-rose-600 border-rose-200 font-bold",
+        isPast: false,
+      };
+    } else {
+      return {
+        label: defaultBadge || "진행 예정",
+        className: "bg-orange-50 text-orange-700 border-orange-200 font-medium",
+        isPast: false,
+      };
+    }
+  };
+
+  // 진행 중이거나 예정된 행사를 먼저 보여주고, 종료된 행사는 뒤로 정렬
+  const events = cityData.items
+    .filter((item) => item.category === "event")
+    .map((item) => ({
+      ...item,
+      status: getEventStatus(item.startDate, item.endDate, item.badge),
+    }))
+    .sort((a, b) => {
+      if (a.status.isPast !== b.status.isPast) {
+        return a.status.isPast ? 1 : -1;
+      }
+      return a.startDate.localeCompare(b.startDate);
+    });
+
   const benefits = cityData.items.filter((item) => item.category === "benefit");
+  const upcomingEventsCount = events.filter((item) => !item.status.isPast).length;
 
   const formatDate = (start: string, end: string) => {
     if (start === end) {
@@ -96,16 +156,16 @@ export default function Home() {
           </h1>
 
           <p className="mt-3 sm:mt-4 text-base sm:text-lg text-stone-600 max-w-2xl leading-relaxed">
-            놓치면 아쉬운 이번 달 봄꽃 축제·문화 행사부터 
+            놓치면 아쉬운 이번 달 주요 문화 축제·행사 소식부터 
             꼭 챙겨야 할 청년 월세 지원 및 출산지원금 혜택까지 편리하게 확인하세요.
           </p>
 
           {/* 주요 통계 카드 */}
           <div className="mt-8 grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-4 max-w-xl">
             <div className="bg-white/90 p-4 rounded-2xl border border-amber-100 shadow-xs">
-              <span className="text-xs font-medium text-stone-500 block">이번 달 축제·행사</span>
+              <span className="text-xs font-medium text-stone-500 block">진행·예정 축제·행사</span>
               <span className="text-2xl font-bold text-orange-600 mt-1 block">
-                {events.length}건
+                {upcomingEventsCount}건
               </span>
             </div>
             <div className="bg-white/90 p-4 rounded-2xl border border-amber-100 shadow-xs">
@@ -141,7 +201,7 @@ export default function Home() {
               </p>
             </div>
             <span className="text-xs font-medium px-3 py-1 rounded-full bg-orange-100 text-orange-800 self-start sm:self-auto">
-              총 {events.length}개의 행사
+              총 {events.length}개의 행사 ({upcomingEventsCount}개 진행·예정)
             </span>
           </div>
 
@@ -149,7 +209,11 @@ export default function Home() {
             {events.map((item) => (
               <article
                 key={item.id}
-                className="group flex flex-col bg-white rounded-3xl border border-stone-200/80 shadow-xs hover:shadow-md hover:border-orange-200 transition-all duration-200 overflow-hidden"
+                className={`group flex flex-col bg-white rounded-3xl border transition-all duration-200 overflow-hidden ${
+                  item.status.isPast
+                    ? "border-stone-200/70 opacity-80"
+                    : "border-stone-200/80 shadow-xs hover:shadow-md hover:border-orange-200"
+                }`}
               >
                 {/* Event 구조화 데이터 */}
                 <script
@@ -175,11 +239,9 @@ export default function Home() {
                   <span className="text-xs font-bold px-2.5 py-1 rounded-lg bg-orange-50 text-orange-700 border border-orange-200/60">
                     {item.categoryLabel}
                   </span>
-                  {item.badge && (
-                    <span className="text-xs font-semibold px-2.5 py-1 rounded-full bg-rose-50 text-rose-600 border border-rose-100">
-                      {item.badge}
-                    </span>
-                  )}
+                  <span className={`text-xs font-semibold px-2.5 py-1 rounded-full border ${item.status.className}`}>
+                    {item.status.label}
+                  </span>
                 </div>
 
                 {/* 제목 & 요약 */}
