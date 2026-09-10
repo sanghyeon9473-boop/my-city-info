@@ -1,0 +1,181 @@
+import Link from "next/link";
+import { notFound } from "next/navigation";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
+import { getAllPosts, getPostBySlug } from "@/lib/posts";
+import type { Metadata } from "next";
+
+export async function generateStaticParams() {
+  const posts = getAllPosts();
+  if (posts.length === 0) {
+    return [{ slug: "_placeholder" }];
+  }
+  return posts.map((post) => ({
+    slug: post.slug,
+  }));
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  if (slug === "_placeholder") {
+    return { title: "성남시 생활 정보 블로그" };
+  }
+  const post = getPostBySlug(slug);
+
+  if (!post) {
+    return {
+      title: "글을 찾을 수 없습니다 | 성남시 생활 정보",
+    };
+  }
+
+  return {
+    title: `${post.title} | 성남시 생활 정보 블로그`,
+    description: post.summary,
+  };
+}
+
+export default async function BlogPostPage({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
+  const { slug } = await params;
+  const post = getPostBySlug(slug);
+
+  if (!post) {
+    notFound();
+  }
+
+  return (
+    <div className="min-h-screen flex flex-col font-sans text-stone-800 bg-[#FAF7F2]">
+      {/* 상단 헤더 */}
+      <header className="sticky top-0 z-30 bg-white/90 backdrop-blur-md border-b border-amber-100 shadow-xs">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+          <Link href="/" className="flex items-center gap-2.5 group">
+            <span className="flex items-center justify-center w-10 h-10 rounded-2xl bg-linear-to-br from-amber-400 to-orange-500 text-white shadow-sm text-xl font-bold group-hover:scale-105 transition-transform">
+              🏡
+            </span>
+            <div>
+              <span className="text-lg font-bold tracking-tight text-stone-900 block leading-tight">
+                성남시 생활 정보
+              </span>
+              <span className="text-[11px] text-amber-700 font-medium hidden sm:inline-block">
+                우리 동네 맞춤 축제 &amp; 지원금 알리미
+              </span>
+            </div>
+          </Link>
+
+          <Link
+            href="/blog"
+            className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs sm:text-sm font-semibold text-stone-600 bg-stone-100 hover:bg-amber-100 hover:text-stone-900 transition-colors"
+          >
+            <span>←</span> 블로그 목록
+          </Link>
+        </div>
+      </header>
+
+      {/* 본문 */}
+      <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 flex-1 w-full space-y-6">
+        {/* 네비게이션 경로 */}
+        <nav className="flex items-center gap-2 text-xs text-stone-500">
+          <Link href="/" className="hover:text-stone-900 transition-colors">
+            홈
+          </Link>
+          <span>/</span>
+          <Link href="/blog" className="hover:text-stone-900 transition-colors">
+            블로그
+          </Link>
+          <span>/</span>
+          <span className="text-stone-800 font-medium truncate">{post.title}</span>
+        </nav>
+
+        {/* 글 본문 카드 */}
+        <article className="bg-white rounded-3xl border border-stone-200/90 shadow-sm p-6 sm:p-10 space-y-8">
+          {/* 헤더 메타정보 */}
+          <div className="space-y-3 pb-6 border-b border-stone-100">
+            <div className="flex items-center gap-2">
+              <span className="text-xs font-bold px-2.5 py-1 rounded-lg bg-orange-50 text-orange-700 border border-orange-200/60">
+                {post.category}
+              </span>
+              <time className="text-xs text-stone-400 font-medium">
+                {post.date}
+              </time>
+            </div>
+
+            <h1 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-stone-900 tracking-tight leading-snug">
+              {post.title}
+            </h1>
+
+            <p className="text-base sm:text-lg text-stone-600 leading-relaxed">
+              {post.summary}
+            </p>
+
+            {post.tags.length > 0 && (
+              <div className="flex flex-wrap gap-1.5 pt-2">
+                {post.tags.map((tag) => (
+                  <span
+                    key={tag}
+                    className="text-xs text-stone-500 bg-stone-100 px-2.5 py-0.5 rounded-full"
+                  >
+                    #{tag}
+                  </span>
+                ))}
+              </div>
+            )}
+          </div>
+
+          {/* 마크다운 렌더링 영역 */}
+          <div className="prose prose-stone max-w-none prose-headings:text-stone-900 prose-headings:font-bold prose-a:text-orange-600 prose-a:underline hover:prose-a:text-orange-700 prose-strong:text-stone-900 prose-blockquote:border-l-amber-400 prose-blockquote:bg-amber-50/40 prose-blockquote:py-1 prose-blockquote:px-4 prose-blockquote:rounded-r-xl leading-relaxed text-sm sm:text-base">
+            <ReactMarkdown remarkPlugins={[remarkGfm]}>
+              {post.content}
+            </ReactMarkdown>
+          </div>
+
+          {/* 하단 버튼 */}
+          <div className="pt-6 border-t border-stone-100 flex items-center justify-between">
+            <Link
+              href="/blog"
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-stone-300 hover:bg-stone-100 text-stone-700 text-xs sm:text-sm font-semibold transition-colors"
+            >
+              <span>←</span> 목록으로 돌아가기
+            </Link>
+
+            <Link
+              href="/"
+              className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold text-orange-600 hover:text-orange-700 transition-colors"
+            >
+              홈으로 이동 →
+            </Link>
+          </div>
+        </article>
+      </main>
+
+      {/* 푸터 */}
+      <footer className="mt-auto bg-stone-900 text-stone-300 py-10 border-t border-stone-800">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pb-6 border-b border-stone-800 text-center sm:text-left">
+            <div>
+              <span className="text-base font-bold text-white block">
+                성남시 생활 정보
+              </span>
+              <p className="text-xs text-stone-400 mt-1">
+                시민들을 위한 공공 생활 행사 및 지원 혜택 알리미 포털
+              </p>
+            </div>
+            <div className="flex gap-4 text-xs text-stone-400">
+              <Link href="/" className="hover:text-stone-300">홈으로</Link>
+              <Link href="/blog" className="hover:text-stone-300">블로그 목록</Link>
+            </div>
+          </div>
+          <p className="mt-6 text-[11px] text-stone-400 text-center sm:text-left">
+            © {new Date().getFullYear()} 성남시 생활 정보. All rights reserved.
+          </p>
+        </div>
+      </footer>
+    </div>
+  );
+}

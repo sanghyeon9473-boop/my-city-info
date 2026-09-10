@@ -66,6 +66,12 @@ export default function Home() {
             >
               🎁 지원금·혜택
             </a>
+            <Link
+              href="/blog"
+              className="px-3 py-1.5 rounded-full text-stone-600 hover:text-orange-600 hover:bg-orange-50 transition-colors"
+            >
+              📝 블로그
+            </Link>
           </nav>
         </div>
       </header>
@@ -153,7 +159,7 @@ export default function Home() {
 
                 {/* 제목 & 요약 */}
                 <div className="px-6 flex-1">
-                  <Link href={`/info/${item.id}/`} className="block">
+                  <Link href="/blog" className="block">
                     <h3 className="text-xl font-bold text-stone-900 group-hover:text-orange-600 transition-colors leading-snug">
                       {item.name}
                     </h3>
@@ -185,10 +191,10 @@ export default function Home() {
                 <div className="px-6 py-3.5 bg-white border-t border-stone-100 flex items-center justify-between">
                   <span className="text-xs text-stone-400">참가비 무료/상세확인</span>
                   <Link
-                    href={`/info/${item.id}/`}
+                    href="/blog"
                     className="inline-flex items-center gap-1 text-xs font-bold text-orange-600 hover:text-orange-700 transition-colors"
                   >
-                    상세보기
+                    자세히 보기
                     <span className="transition-transform group-hover:translate-x-0.5">→</span>
                   </Link>
                 </div>
@@ -236,7 +242,7 @@ export default function Home() {
 
                 {/* 제목 & 요약 */}
                 <div className="px-6 flex-1">
-                  <Link href={`/info/${item.id}/`} className="block">
+                  <Link href="/blog" className="block">
                     <h3 className="text-xl font-bold text-stone-900 group-hover:text-amber-700 transition-colors leading-snug">
                       {item.name}
                     </h3>
@@ -268,10 +274,10 @@ export default function Home() {
                 <div className="px-6 py-4 bg-white border-t border-stone-100 flex items-center justify-between">
                   <span className="text-xs text-amber-700 font-medium">예산 소진 시 조기 마감 가능</span>
                   <Link
-                    href={`/info/${item.id}/`}
+                    href="/blog"
                     className="inline-flex items-center gap-1 text-xs font-bold px-3.5 py-1.5 rounded-full bg-amber-500 hover:bg-amber-600 text-white transition-colors shadow-xs"
                   >
-                    상세보기 및 신청
+                    자세히 보기
                     <span>→</span>
                   </Link>
                 </div>
