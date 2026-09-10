@@ -102,6 +102,23 @@ export default async function BlogPostPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
+
+  if (slug === "_placeholder") {
+    return (
+      <div className="min-h-screen flex flex-col items-center justify-center font-sans text-stone-800 bg-[#FAF7F2] p-4 text-center">
+        <span className="text-4xl mb-3">📬</span>
+        <h1 className="text-2xl font-bold mb-2 text-stone-900">아직 작성된 블로그 글이 없습니다</h1>
+        <p className="text-stone-500 text-sm mb-6">곧 새로운 공공 소식이 등록될 예정입니다.</p>
+        <Link
+          href="/"
+          className="px-5 py-2.5 rounded-full bg-stone-900 hover:bg-stone-800 text-white text-sm font-semibold transition-colors"
+        >
+          메인으로 이동
+        </Link>
+      </div>
+    );
+  }
+
   const post = getPostBySlug(slug);
 
   if (!post) {
