@@ -58,14 +58,14 @@ async function main() {
   }
 
   let candidates = rawList;
-  const seongnamItems = candidates.filter((item) => hasKeyword(item, '성남'));
+  const dongdaemunItems = candidates.filter((item) => hasKeyword(item, '동대문'));
 
-  if (seongnamItems.length > 0) {
-    candidates = seongnamItems;
+  if (dongdaemunItems.length > 0) {
+    candidates = dongdaemunItems;
   } else {
-    const gyeonggiItems = candidates.filter((item) => hasKeyword(item, '경기'));
-    if (gyeonggiItems.length > 0) {
-      candidates = gyeonggiItems;
+    const seoulItems = candidates.filter((item) => hasKeyword(item, '서울'));
+    if (seoulItems.length > 0) {
+      candidates = seoulItems;
     }
   }
 

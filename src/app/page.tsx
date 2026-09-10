@@ -45,7 +45,7 @@ export default function Home() {
             </span>
             <div>
               <span className="text-lg sm:text-xl font-bold tracking-tight text-stone-900 block leading-tight">
-                성남시 생활 정보
+                동대문구 생활 정보
               </span>
               <span className="text-[11px] text-amber-700 font-medium hidden sm:inline-block">
                 우리 동네 맞춤 축제 &amp; 지원금 알리미
@@ -72,6 +72,12 @@ export default function Home() {
             >
               📝 블로그
             </Link>
+            <Link
+              href="/about"
+              className="px-3 py-1.5 rounded-full text-stone-600 hover:text-orange-600 hover:bg-orange-50 transition-colors"
+            >
+              ℹ️ 소개
+            </Link>
           </nav>
         </div>
       </header>
@@ -81,11 +87,11 @@ export default function Home() {
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center sm:text-left relative z-10">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/80 border border-amber-200 text-amber-900 text-xs sm:text-sm font-medium mb-4 shadow-xs">
             <span className="flex h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
-            성남시 최신 공공데이터 연동 중
+            동대문구 최신 공공데이터 연동 중
           </div>
 
           <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-stone-900 tracking-tight leading-tight sm:leading-snug">
-            우리 동네 <span className="text-orange-600 underline decoration-amber-300 decoration-wavy decoration-2">성남</span>의
+            우리 동네 <span className="text-orange-600 underline decoration-amber-300 decoration-wavy decoration-2">동대문</span>의
             <br className="hidden sm:inline" /> 알찬 생활 소식을 한눈에!
           </h1>
 
@@ -131,7 +137,7 @@ export default function Home() {
                 </h2>
               </div>
               <p className="text-sm text-stone-500 mt-1">
-                가족, 연인, 친구와 함께 즐길 수 있는 성남시 주요 축제 일정입니다.
+                가족, 연인, 친구와 함께 즐길 수 있는 동대문구 주요 축제 일정입니다.
               </p>
             </div>
             <span className="text-xs font-medium px-3 py-1 rounded-full bg-orange-100 text-orange-800 self-start sm:self-auto">
@@ -145,6 +151,25 @@ export default function Home() {
                 key={item.id}
                 className="group flex flex-col bg-white rounded-3xl border border-stone-200/80 shadow-xs hover:shadow-md hover:border-orange-200 transition-all duration-200 overflow-hidden"
               >
+                {/* Event 구조화 데이터 */}
+                <script
+                  type="application/ld+json"
+                  dangerouslySetInnerHTML={{
+                    __html: JSON.stringify({
+                      "@context": "https://schema.org",
+                      "@type": "Event",
+                      name: item.name,
+                      startDate: item.startDate,
+                      endDate: item.endDate,
+                      location: {
+                        "@type": "Place",
+                        name: item.location,
+                      },
+                      description: item.summary,
+                    }),
+                  }}
+                />
+
                 {/* 카드 상단 배지 */}
                 <div className="p-6 pb-4 flex items-center justify-between gap-2">
                   <span className="text-xs font-bold px-2.5 py-1 rounded-lg bg-orange-50 text-orange-700 border border-orange-200/60">
@@ -214,7 +239,7 @@ export default function Home() {
                 </h2>
               </div>
               <p className="text-sm text-stone-500 mt-1">
-                성남시민이라면 누릴 수 있는 맞춤형 경제 지원 및 복지 혜택 정보입니다.
+                동대문구민이라면 누릴 수 있는 맞춤형 경제 지원 및 복지 혜택 정보입니다.
               </p>
             </div>
             <span className="text-xs font-medium px-3 py-1 rounded-full bg-amber-100 text-amber-800 self-start sm:self-auto">
@@ -228,6 +253,23 @@ export default function Home() {
                 key={item.id}
                 className="group flex flex-col bg-white rounded-3xl border border-stone-200/80 shadow-xs hover:shadow-md hover:border-amber-300 transition-all duration-200 overflow-hidden"
               >
+                {/* GovernmentService 구조화 데이터 */}
+                <script
+                  type="application/ld+json"
+                  dangerouslySetInnerHTML={{
+                    __html: JSON.stringify({
+                      "@context": "https://schema.org",
+                      "@type": "GovernmentService",
+                      name: item.name,
+                      description: item.summary,
+                      provider: {
+                        "@type": "GovernmentOrganization",
+                        name: "동대문구청",
+                      },
+                    }),
+                  }}
+                />
+
                 {/* 상단 혜택 뱃지 */}
                 <div className="p-6 pb-4 flex items-center justify-between gap-2">
                   <span className="text-xs font-bold px-2.5 py-1 rounded-lg bg-amber-50 text-amber-800 border border-amber-200/60">
@@ -311,7 +353,7 @@ export default function Home() {
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pb-6 border-b border-stone-800 text-center sm:text-left">
             <div>
               <span className="text-base font-bold text-white block">
-                성남시 생활 정보
+                동대문구 생활 정보
               </span>
               <p className="text-xs text-stone-400 mt-1">
                 시민들을 위한 공공 생활 행사 및 지원 혜택 알리미 포털
@@ -329,7 +371,7 @@ export default function Home() {
 
           <div className="mt-6 flex flex-col sm:flex-row items-center justify-between text-[11px] text-stone-400 gap-3 text-center sm:text-left">
             <p>
-              © {new Date().getFullYear()} 성남시 생활 정보. 모든 공공데이터는 공공데이터포털(data.go.kr)에 의거하여 제공됩니다.
+              © {new Date().getFullYear()} 동대문구 생활 정보. 모든 공공데이터는 공공데이터포털(data.go.kr)에 의거하여 제공됩니다.
             </p>
             <div className="flex gap-4">
               <span className="hover:text-stone-300 cursor-pointer">이용약관</span>

@@ -3,8 +3,8 @@ import { getAllPosts } from "@/lib/posts";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "동네 소식 블로그 | 성남시 생활 정보",
-  description: "성남시의 최신 행사, 지원금, 알찬 생활 정보를 담은 공식 블로그 글 목록입니다.",
+  title: "동네 소식 블로그 | 동대문구 생활 정보",
+  description: "동대문구의 최신 행사, 지원금, 알찬 생활 정보를 담은 공식 블로그 글 목록입니다.",
 };
 
 export default function BlogListPage() {
@@ -21,7 +21,7 @@ export default function BlogListPage() {
             </span>
             <div>
               <span className="text-lg font-bold tracking-tight text-stone-900 block leading-tight">
-                성남시 생활 정보
+                동대문구 생활 정보
               </span>
               <span className="text-[11px] text-amber-700 font-medium hidden sm:inline-block">
                 우리 동네 맞춤 축제 &amp; 지원금 알리미
@@ -48,6 +48,12 @@ export default function BlogListPage() {
             >
               📝 블로그
             </Link>
+            <Link
+              href="/about"
+              className="px-3 py-1.5 rounded-full text-stone-600 hover:text-orange-600 hover:bg-orange-50 transition-colors"
+            >
+              ℹ️ 소개
+            </Link>
           </nav>
         </div>
       </header>
@@ -59,7 +65,7 @@ export default function BlogListPage() {
             <span>📝</span> 우리 동네 이야기
           </div>
           <h1 className="text-3xl sm:text-4xl font-extrabold text-stone-900 tracking-tight leading-tight">
-            성남시 생활 소식 <span className="text-orange-600">블로그</span>
+            동대문구 생활 소식 <span className="text-orange-600">블로그</span>
           </h1>
           <p className="mt-2.5 text-stone-600 text-base sm:text-lg max-w-2xl">
             축제 후기, 유용한 지원금 신청 가이드, 알찬 동네 꿀팁을 확인해 보세요.
@@ -147,7 +153,7 @@ export default function BlogListPage() {
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pb-6 border-b border-stone-800 text-center sm:text-left">
             <div>
               <span className="text-base font-bold text-white block">
-                성남시 생활 정보
+                동대문구 생활 정보
               </span>
               <p className="text-xs text-stone-400 mt-1">
                 시민들을 위한 공공 생활 행사 및 지원 혜택 알리미 포털
@@ -158,10 +164,11 @@ export default function BlogListPage() {
               <Link href="/#events" className="hover:text-stone-300">행사목록</Link>
               <Link href="/#benefits" className="hover:text-stone-300">지원금목록</Link>
               <Link href="/blog" className="hover:text-stone-300">블로그</Link>
+              <Link href="/about" className="hover:text-stone-300">소개</Link>
             </div>
           </div>
           <p className="mt-6 text-[11px] text-stone-400 text-center sm:text-left">
-            © {new Date().getFullYear()} 성남시 생활 정보. All rights reserved.
+            © {new Date().getFullYear()} 동대문구 생활 정보. All rights reserved.
           </p>
         </div>
       </footer>
