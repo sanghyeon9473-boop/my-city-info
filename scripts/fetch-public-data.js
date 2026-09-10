@@ -182,16 +182,27 @@ ${JSON.stringify(targetItem, null, 2)}`;
       processedItem.link = processedItem.url;
     }
 
+    const today = new Date().toISOString().split('T')[0];
     if (Array.isArray(cityInfo)) {
       cityInfo.push(processedItem);
     } else if (cityInfo && Array.isArray(cityInfo.items)) {
       cityInfo.items.push(processedItem);
+      cityInfo.lastUpdated = today;
     } else {
       throw new Error('city-info.json의 데이터 형식이 올바르지 않습니다.');
     }
 
     fs.writeFileSync(cityInfoPath, JSON.stringify(cityInfo, null, 2) + '\n', 'utf-8');
-    console.log(`성공적으로 추가되었습니다: ${processedItem.name}`);
+
+    // local-info.json 파일도 함께 최신 상태로 유지
+    const localInfoPath = path.resolve(__dirname, '../public/data/local-info.json');
+    try {
+      fs.writeFileSync(localInfoPath, JSON.stringify(cityInfo, null, 2) + '\n', 'utf-8');
+    } catch (e) {
+      // local-info.json 쓰기 실패 시에도 프로세스 중단 방지
+    }
+
+    console.log(`성공적으로 추가되었습니다: ${processedItem.name} (최종 업데이트: ${today})`);
   } catch (error) {
     console.error('city-info.json 저장 중 오류 발생:', error.message);
     // 에러 발생 시 기존 내용 유지
