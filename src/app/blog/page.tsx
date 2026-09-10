@@ -3,8 +3,8 @@ import { getAllPosts } from "@/lib/posts";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "동네 소식 블로그 | 동대문구 생활 정보",
-  description: "동대문구의 최신 행사, 지원금, 알찬 생활 정보를 담은 공식 블로그 글 목록입니다.",
+  title: "지원금·복지 소식 블로그 | 동대문구 생활 정보",
+  description: "동대문구민을 위한 최신 정부 지원금, 복지 혜택 및 신청 가이드를 알기 쉽게 전해드립니다.",
 };
 
 export default function BlogListPage() {
@@ -62,13 +62,13 @@ export default function BlogListPage() {
       <section className="bg-linear-to-b from-amber-100/60 via-orange-50/40 to-[#FAF7F2] py-10 sm:py-14 border-b border-amber-100/50">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/80 border border-amber-200 text-amber-900 text-xs sm:text-sm font-medium mb-3 shadow-xs">
-            <span>📝</span> 우리 동네 이야기
+            <span>📝</span> 우리 동네 혜택 알리미
           </div>
           <h1 className="text-3xl sm:text-4xl font-extrabold text-stone-900 tracking-tight leading-tight">
-            동대문구 생활 소식 <span className="text-orange-600">블로그</span>
+            동대문구 지원금 &amp; 복지 <span className="text-orange-600">블로그</span>
           </h1>
           <p className="mt-2.5 text-stone-600 text-base sm:text-lg max-w-2xl">
-            축제 후기, 유용한 지원금 신청 가이드, 알찬 동네 꿀팁을 확인해 보세요.
+            동대문구민을 위한 최신 지원금 신청 가이드와 유용한 복지 혜택 소식을 확인해 보세요.
           </p>
         </div>
       </section>
