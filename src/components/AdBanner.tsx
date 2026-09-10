@@ -22,6 +22,10 @@ export default function AdBanner({
     return null;
   }
 
+  const clientPublisherId = adsenseId.startsWith("ca-")
+    ? adsenseId
+    : `ca-${adsenseId}`;
+
   useEffect(() => {
     try {
       // @ts-ignore
@@ -39,7 +43,7 @@ export default function AdBanner({
       <ins
         className="adsbygoogle"
         style={{ display: "block", minHeight: "90px", width: "100%" }}
-        data-ad-client={adsenseId}
+        data-ad-client={clientPublisherId}
         data-ad-slot={slot || undefined}
         data-ad-format={format}
         data-full-width-responsive={responsive ? "true" : "false"}

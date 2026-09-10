@@ -65,6 +65,9 @@ const adsenseId = process.env.NEXT_PUBLIC_ADSENSE_ID;
 const isAdsenseValid = Boolean(
   adsenseId && adsenseId.trim() !== "" && adsenseId.trim() !== "나중에_입력"
 );
+const clientPublisherId = adsenseId?.startsWith("ca-")
+  ? adsenseId
+  : `ca-${adsenseId}`;
 
 export default function RootLayout({
   children,
@@ -78,11 +81,14 @@ export default function RootLayout({
     >
       <head>
         {isAdsenseValid && (
-          <script
-            async
-            src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${adsenseId}`}
-            crossOrigin="anonymous"
-          />
+          <>
+            <script
+              async
+              src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${clientPublisherId}`}
+              crossOrigin="anonymous"
+            />
+            <meta name="google-adsense-account" content={clientPublisherId} />
+          </>
         )}
         <script
           type="application/ld+json"
