@@ -109,7 +109,21 @@
       "link": "https://www.gov.kr/portal/rcvfvrSvc/dtlEx/116010000001",
       "badge": "최대 1,152만원 보증",
       "url": "https://www.gov.kr/portal/rcvfvrSvc/dtlEx/116010000001"
+    },
+    {
+      "id": "125000000004",
+      "name": "북한이탈주민 자산형성 지원 (미래행복통장)",
+      "category": "혜택",
+      "categoryLabel": "지원금/혜택",
+      "startDate": "2023-10-27",
+      "endDate": "상시",
+      "location": "통일부",
+      "target": "2014년 11월 29일 이후 입국한 만 18세 이상 북한이탈주민 중 3개월 이상 경제활동을 하는 소득 기준 충족자 (유사 사업 중복 불가)",
+      "summary": "북한이탈주민이 매월 10~50만원 저축 시, 적립금과 동일한 금액을 정부에서 지원합니다.",
+      "link": "https://www.gov.kr/portal/rcvfvrSvc/dtlEx/125000000004",
+      "badge": "매월 최대 50만원 1:1 매칭 지원",
+      "url": "https://www.gov.kr/portal/rcvfvrSvc/dtlEx/125000000004"
     }
   ],
-  "lastPageChecked": 2
+  "lastPageChecked": 3
 }
