@@ -6,6 +6,7 @@ import { getAllPosts, getPostBySlug } from "@/lib/posts";
 import type { Metadata } from "next";
 import fs from "fs";
 import path from "path";
+import AdBanner from "@/components/AdBanner";
 
 export async function generateStaticParams() {
   const posts = getAllPosts();
@@ -281,6 +282,9 @@ export default async function BlogPostPage({
               {post.content}
             </ReactMarkdown>
           </div>
+
+          {/* 본문 하단 광고 */}
+          <AdBanner />
 
           {/* E-E-A-T 신뢰도 정보: 원문 출처 & AI 작성 안내 */}
           <div className="mt-10 pt-6 border-t border-stone-200 space-y-4">

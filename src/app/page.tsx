@@ -1,5 +1,6 @@
 import cityDataRaw from "../../public/data/city-info.json";
 import Link from "next/link";
+import AdBanner from "@/components/AdBanner";
 
 interface InfoItem {
   id: string;
@@ -289,6 +290,9 @@ export default function Home() {
             ))}
           </div>
         </section>
+
+        {/* 행사 섹션과 혜택 섹션 사이 광고 배너 */}
+        <AdBanner />
 
         {/* 섹션 2: 지원금/혜택 카드 목록 */}
         <section id="benefits" className="scroll-mt-20">

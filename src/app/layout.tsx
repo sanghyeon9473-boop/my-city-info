@@ -61,6 +61,11 @@ const breadcrumbSchema = {
   ],
 };
 
+const adsenseId = process.env.NEXT_PUBLIC_ADSENSE_ID;
+const isAdsenseValid = Boolean(
+  adsenseId && adsenseId.trim() !== "" && adsenseId.trim() !== "나중에_입력"
+);
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -72,6 +77,13 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased scroll-smooth`}
     >
       <head>
+        {isAdsenseValid && (
+          <script
+            async
+            src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${adsenseId}`}
+            crossOrigin="anonymous"
+          />
+        )}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
