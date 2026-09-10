@@ -69,6 +69,11 @@ const clientPublisherId = adsenseId?.startsWith("ca-")
   ? adsenseId
   : `ca-${adsenseId}`;
 
+const gaId = process.env.NEXT_PUBLIC_GA_ID;
+const isGaValid = Boolean(
+  gaId && gaId.trim() !== "" && gaId.trim() !== "나중에_입력"
+);
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -80,6 +85,25 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased scroll-smooth`}
     >
       <head>
+        {isGaValid && (
+          <>
+            <script
+              async
+              src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`}
+            />
+            <script
+              id="google-analytics"
+              dangerouslySetInnerHTML={{
+                __html: `
+                  window.dataLayer = window.dataLayer || [];
+                  function gtag(){dataLayer.push(arguments);}
+                  gtag('js', new Date());
+                  gtag('config', '${gaId}');
+                `,
+              }}
+            />
+          </>
+        )}
         {isAdsenseValid && (
           <>
             <script
