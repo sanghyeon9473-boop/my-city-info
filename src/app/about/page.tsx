@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "소개 | 동대문구 생활 정보",
     description: "동대문구 생활 정보 포털의 운영 목적, 공공데이터포털 데이터 출처, AI 기반 콘텐츠 생성 방식 및 투명성 안내입니다.",
-    url: "https://my-city-info-dod.pages.dev/about/",
+    url: "https://dongdaemungu.com/about/",
     siteName: "동대문구 생활 정보",
     type: "website",
   },

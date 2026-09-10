@@ -55,6 +55,7 @@ jobs:
       - name: Build
         run: npm run build
         env:
+          NEXT_PUBLIC_SITE_URL: https://dongdaemungu.com
           NEXT_PUBLIC_ADSENSE_ID: pub-8253492742875191
 
       - name: Deploy to Cloudflare Pages
