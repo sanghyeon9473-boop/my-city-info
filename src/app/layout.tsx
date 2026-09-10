@@ -12,7 +12,7 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://my-city-info.pages.dev";
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://my-city-info-dod.pages.dev";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),

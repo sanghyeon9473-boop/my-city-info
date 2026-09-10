@@ -4,7 +4,7 @@ import { getAllPosts } from "@/lib/posts";
 export const dynamic = "force-static";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://my-city-info.pages.dev";
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://my-city-info-dod.pages.dev";
   const posts = getAllPosts();
 
   const blogPosts = posts.map((post) => ({

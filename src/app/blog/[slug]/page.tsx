@@ -34,7 +34,7 @@ export async function generateMetadata({
     };
   }
 
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://my-city-info.pages.dev";
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://my-city-info-dod.pages.dev";
   const postUrl = `${siteUrl}/blog/${post.slug}/`;
 
   return {
@@ -109,7 +109,7 @@ export default async function BlogPostPage({
   }
 
   const sourceInfo = findSourceInfo(post.title, post.content);
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://my-city-info.pages.dev";
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://my-city-info-dod.pages.dev";
 
   const blogPostingSchema = {
     "@context": "https://schema.org",
