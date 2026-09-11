@@ -57,11 +57,10 @@ async function main() {
 
     const endpoint = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${geminiApiKey}`;
 
+    // 한국 표준시(KST, UTC+9) 기준 오늘 날짜 구하기
     const now = new Date();
-    const yyyy = now.getFullYear();
-    const mm = String(now.getMonth() + 1).padStart(2, '0');
-    const dd = String(now.getDate()).padStart(2, '0');
-    const today = `${yyyy}-${mm}-${dd}`;
+    const kstDate = new Date(now.getTime() + 9 * 60 * 60 * 1000);
+    const today = kstDate.toISOString().split('T')[0];
 
     const prompt = `너는 동대문구 생활 정보 포털의 친절하고 전문적인 공식 블로그 에디터야.
 아래 정부 지원금 및 복지 혜택 공공데이터를 바탕으로, 동대문구민과 서울시민이 쉽게 이해하고 바로 신청할 수 있는 정성스러운 블로그 글을 작성해줘.
@@ -89,7 +88,7 @@ tags: [동대문구, 지원금, 복지혜택, 관련키워드]
 ---
 (본문 마크다운 내용)
 
-마지막 줄에 반드시 FILENAME: YYYY-MM-DD-keyword 형식으로 파일명을 출력해줘. 키워드는 영문 소문자 단어 1~2개로.`;
+마지막 줄에 반드시 FILENAME: ${today}-keyword 형식으로 파일명을 출력해줘. 키워드는 영문 소문자 단어 1~2개로.`;
 
     const response = await fetch(endpoint, {
       method: 'POST',

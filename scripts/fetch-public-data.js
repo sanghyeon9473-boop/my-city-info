@@ -234,7 +234,10 @@ ${JSON.stringify(targetCandidate, null, 2)}`;
     if (!processedItem.url && processedItem.link) processedItem.url = processedItem.link;
     if (!processedItem.link && processedItem.url) processedItem.link = processedItem.url;
 
-    const today = new Date().toISOString().split('T')[0];
+    // 한국 표준시(KST, UTC+9) 기준 오늘 날짜 구하기
+    const now = new Date();
+    const kstDate = new Date(now.getTime() + 9 * 60 * 60 * 1000);
+    const today = kstDate.toISOString().split('T')[0];
     if (Array.isArray(cityInfo)) {
       cityInfo.push(processedItem);
     } else if (cityInfo && Array.isArray(cityInfo.items)) {
