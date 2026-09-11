@@ -191,32 +191,32 @@ export default async function BlogPostPage({
       {/* 상단 헤더 */}
       <header className="sticky top-0 z-30 bg-white/90 backdrop-blur-md border-b border-amber-100 shadow-xs">
         <div className="max-w-4xl mx-auto px-3 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-2">
-          <Link href="/" className="flex items-center gap-2 sm:gap-2.5 group min-w-0">
-            <span className="flex items-center justify-center w-8 h-8 sm:w-10 sm:h-10 rounded-xl sm:rounded-2xl bg-linear-to-br from-amber-400 to-orange-500 text-white shadow-sm text-base sm:text-xl font-bold group-hover:scale-105 transition-transform shrink-0">
+          <Link href="/" className="flex items-center gap-2 sm:gap-2.5 group shrink-0">
+            <span className="flex items-center justify-center w-9 h-9 sm:w-10 sm:h-10 rounded-xl sm:rounded-2xl bg-linear-to-br from-amber-400 to-orange-500 text-white shadow-sm text-lg sm:text-xl font-bold group-hover:scale-105 transition-transform">
               🏡
             </span>
-            <div className="min-w-0">
-              <span className="text-sm sm:text-xl font-bold tracking-tight text-stone-900 block leading-tight whitespace-nowrap truncate">
+            <div className="hidden sm:block">
+              <span className="text-xl font-bold tracking-tight text-stone-900 block leading-tight">
                 동대문구 생활 정보
               </span>
-              <span className="text-[11px] text-amber-700 font-medium hidden sm:inline-block">
+              <span className="text-[11px] text-amber-700 font-medium">
                 우리 동네 맞춤 축제 &amp; 지원금 알리미
               </span>
             </div>
           </Link>
 
-          <nav className="flex items-center gap-1.5 sm:gap-3 text-xs sm:text-sm font-medium shrink-0">
+          <nav className="flex items-center gap-1.5 sm:gap-3 text-[13px] sm:text-sm font-medium">
             <Link
               href="/about"
-              className="px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-full text-stone-600 hover:text-orange-600 hover:bg-orange-50 transition-colors whitespace-nowrap"
+              className="px-2.5 sm:px-3 py-1.5 rounded-full text-stone-600 hover:text-orange-600 hover:bg-orange-50 transition-colors whitespace-nowrap"
             >
               ℹ️ 소개
             </Link>
             <Link
               href="/blog"
-              className="inline-flex items-center gap-1 px-2.5 sm:px-3.5 py-1 sm:py-1.5 rounded-full font-semibold text-stone-600 bg-stone-100 hover:bg-amber-100 hover:text-stone-900 transition-colors whitespace-nowrap"
+              className="inline-flex items-center gap-1 px-2.5 sm:px-3.5 py-1.5 rounded-full font-semibold text-stone-600 bg-stone-100 hover:bg-amber-100 hover:text-stone-900 transition-colors whitespace-nowrap"
             >
-              <span>←</span> <span className="hidden sm:inline">블로그</span> 목록
+              <span>←</span> 블로그 목록
             </Link>
           </nav>
         </div>
