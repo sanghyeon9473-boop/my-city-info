@@ -33,28 +33,28 @@ export default function AboutPage() {
             </div>
           </Link>
 
-          <nav className="flex items-center gap-1.5 sm:gap-3 text-[13px] sm:text-sm font-medium">
+          <nav className="flex items-center gap-1 sm:gap-3 text-[13px] sm:text-sm font-medium">
             <Link
               href="/#events"
-              className="px-2.5 sm:px-3 py-1.5 rounded-full text-stone-600 hover:text-orange-600 hover:bg-orange-50 transition-colors whitespace-nowrap"
+              className="px-2 sm:px-3 py-1.5 rounded-full text-stone-600 hover:text-orange-600 hover:bg-orange-50 transition-colors whitespace-nowrap"
             >
               🌸 행사·축제
             </Link>
             <Link
               href="/#benefits"
-              className="px-2.5 sm:px-3 py-1.5 rounded-full text-stone-600 hover:text-amber-600 hover:bg-amber-50 transition-colors whitespace-nowrap"
+              className="px-2 sm:px-3 py-1.5 rounded-full text-stone-600 hover:text-amber-600 hover:bg-amber-50 transition-colors whitespace-nowrap"
             >
               🎁 혜택·지원금
             </Link>
             <Link
               href="/blog"
-              className="px-2.5 sm:px-3 py-1.5 rounded-full text-stone-600 hover:text-orange-600 hover:bg-orange-50 transition-colors whitespace-nowrap"
+              className="px-2 sm:px-3 py-1.5 rounded-full text-stone-600 hover:text-orange-600 hover:bg-orange-50 transition-colors whitespace-nowrap"
             >
               📝 블로그
             </Link>
             <Link
               href="/about"
-              className="px-2.5 sm:px-3 py-1.5 rounded-full text-orange-700 bg-orange-100/70 font-bold transition-colors whitespace-nowrap"
+              className="px-2 sm:px-3 py-1.5 rounded-full text-orange-700 bg-orange-100/70 font-bold transition-colors whitespace-nowrap"
             >
               ℹ️ 소개
             </Link>

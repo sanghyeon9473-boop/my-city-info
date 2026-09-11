@@ -169,28 +169,28 @@ export default function Home() {
             </div>
           </div>
 
-          <nav className="flex items-center gap-1.5 sm:gap-3 text-[13px] sm:text-sm font-medium">
+          <nav className="flex items-center gap-1 sm:gap-3 text-[13px] sm:text-sm font-medium">
             <a
               href="#events"
-              className="px-2.5 sm:px-3 py-1.5 rounded-full text-stone-600 hover:text-orange-600 hover:bg-orange-50 transition-colors whitespace-nowrap"
+              className="px-2 sm:px-3 py-1.5 rounded-full text-stone-600 hover:text-orange-600 hover:bg-orange-50 transition-colors whitespace-nowrap"
             >
               🌸 행사·축제
             </a>
             <a
               href="#benefits"
-              className="px-2.5 sm:px-3 py-1.5 rounded-full text-stone-600 hover:text-amber-600 hover:bg-amber-50 transition-colors whitespace-nowrap"
+              className="px-2 sm:px-3 py-1.5 rounded-full text-stone-600 hover:text-amber-600 hover:bg-amber-50 transition-colors whitespace-nowrap"
             >
               🎁 혜택·지원금
             </a>
             <Link
               href="/blog"
-              className="px-2.5 sm:px-3 py-1.5 rounded-full text-stone-600 hover:text-orange-600 hover:bg-orange-50 transition-colors whitespace-nowrap"
+              className="px-2 sm:px-3 py-1.5 rounded-full text-stone-600 hover:text-orange-600 hover:bg-orange-50 transition-colors whitespace-nowrap"
             >
               📝 블로그
             </Link>
             <Link
               href="/about"
-              className="px-2.5 sm:px-3 py-1.5 rounded-full text-stone-600 hover:text-orange-600 hover:bg-orange-50 transition-colors whitespace-nowrap"
+              className="px-2 sm:px-3 py-1.5 rounded-full text-stone-600 hover:text-orange-600 hover:bg-orange-50 transition-colors whitespace-nowrap"
             >
               ℹ️ 소개
             </Link>
@@ -335,20 +335,20 @@ export default function Home() {
                   </div>
 
                   {/* 상세 메타 정보 */}
-                  <div className="p-6 pt-4 mt-4 bg-stone-50/70 border-t border-stone-100 space-y-2 text-xs text-stone-600">
+                  <div className="px-5 sm:px-6 py-4 mt-4 bg-stone-50/70 border-t border-stone-100 space-y-2.5 text-xs text-stone-600">
                     <div className="flex items-start gap-2">
-                      <span className="font-semibold text-stone-700 shrink-0 w-10">🗓️ 기간</span>
-                      <span className="text-stone-800 font-medium">
+                      <span className="font-semibold text-stone-700 shrink-0 w-14">🗓️ 기간</span>
+                      <span className="text-stone-800 font-medium break-keep">
                         {formatDate(item.startDate, item.endDate)}
                       </span>
                     </div>
                     <div className="flex items-start gap-2">
-                      <span className="font-semibold text-stone-700 shrink-0 w-10">📍 장소</span>
-                      <span className="break-keep">{item.location}</span>
+                      <span className="font-semibold text-stone-700 shrink-0 w-14">📍 장소</span>
+                      <span className="text-stone-800 break-keep">{item.location}</span>
                     </div>
                     <div className="flex items-start gap-2">
-                      <span className="font-semibold text-stone-700 shrink-0 w-10">👥 대상</span>
-                      <span className="break-keep">{item.target}</span>
+                      <span className="font-semibold text-stone-700 shrink-0 w-14">👥 대상</span>
+                      <span className="text-stone-800 break-keep">{item.target}</span>
                     </div>
                   </div>
 
@@ -473,20 +473,20 @@ export default function Home() {
                   </div>
 
                   {/* 상세 조건 정보 */}
-                  <div className="p-6 pt-4 mt-4 bg-amber-50/40 border-t border-amber-100/60 space-y-2 text-xs text-stone-600">
+                  <div className="px-5 sm:px-6 py-4 mt-4 bg-amber-50/40 border-t border-amber-100/60 space-y-2.5 text-xs text-stone-600">
                     <div className="flex items-start gap-2">
-                      <span className="font-semibold text-stone-700 shrink-0 w-14">🗓️ 신청기간</span>
-                      <span className="text-stone-800 font-medium">
+                      <span className="font-semibold text-stone-700 shrink-0 w-[4.5rem]">🗓️ 신청기간</span>
+                      <span className="text-stone-800 font-medium break-keep">
                         {formatDate(item.startDate, item.endDate)}
                       </span>
                     </div>
                     <div className="flex items-start gap-2">
-                      <span className="font-semibold text-stone-700 shrink-0 w-14">👥 지원대상</span>
-                      <span className="text-stone-800">{item.target}</span>
+                      <span className="font-semibold text-stone-700 shrink-0 w-[4.5rem]">👥 지원대상</span>
+                      <span className="text-stone-800 break-keep">{item.target}</span>
                     </div>
                     <div className="flex items-start gap-2">
-                      <span className="font-semibold text-stone-700 shrink-0 w-14">🏢 신청방법</span>
-                      <span className="break-keep">{item.location}</span>
+                      <span className="font-semibold text-stone-700 shrink-0 w-[4.5rem]">🏢 신청방법</span>
+                      <span className="text-stone-800 break-keep">{item.location}</span>
                     </div>
                   </div>
 
