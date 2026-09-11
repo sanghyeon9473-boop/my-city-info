@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-09-11",
+  "lastUpdated": "2026-09-12",
   "source": "공공데이터포털 (data.go.kr)",
   "items": [
     {
@@ -123,7 +123,21 @@
       "link": "https://www.gov.kr/portal/rcvfvrSvc/dtlEx/125000000004",
       "badge": "매월 최대 50만원 1:1 매칭 지원",
       "url": "https://www.gov.kr/portal/rcvfvrSvc/dtlEx/125000000004"
+    },
+    {
+      "id": "134200000006",
+      "name": "국립특수학교 및 국립부설학교 특수학급 지원",
+      "category": "교육",
+      "categoryLabel": "지원금/혜택",
+      "startDate": "2024-05-15",
+      "endDate": "상시",
+      "location": "국립특수학교, 국립대학부설유치원 및 학교",
+      "target": "국립 특수학교 또는 국립대학 부설 유치원 및 학교에 재학 중인 특수교육대상자",
+      "summary": "방과후학교, 돌봄교실, 통학비 및 치료지원비 등 특수학급 활동을 지원합니다.",
+      "link": "https://www.gov.kr/portal/rcvfvrSvc/dtlEx/134200000006",
+      "badge": "통학비/치료비 지원",
+      "url": "https://www.gov.kr/portal/rcvfvrSvc/dtlEx/134200000006"
     }
   ],
-  "lastPageChecked": 3
+  "lastPageChecked": 4
 }
