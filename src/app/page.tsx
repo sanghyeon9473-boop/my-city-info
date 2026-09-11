@@ -207,7 +207,7 @@ export default function Home() {
           </div>
 
           <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-stone-900 tracking-tight leading-tight sm:leading-snug break-keep">
-            우리 동네 <span className="text-orange-600 underline decoration-amber-300 decoration-wavy decoration-2">동대문</span>의
+            우리 동네 <span className="text-orange-600 underline decoration-amber-300 decoration-wavy decoration-2">동대문구</span>의
             <br className="hidden sm:inline" /> 알찬 생활 소식을 한눈에!
           </h1>
 
