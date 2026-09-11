@@ -154,13 +154,13 @@ export default function Home() {
     <div className="min-h-screen flex flex-col font-sans text-stone-800 bg-[#FAF7F2]">
       {/* 1. 상단 네비게이션 & 헤더 */}
       <header className="sticky top-0 z-30 bg-white/90 backdrop-blur-md border-b border-amber-100 shadow-xs">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-          <div className="flex items-center gap-2.5">
-            <span className="flex items-center justify-center w-10 h-10 rounded-2xl bg-linear-to-br from-amber-400 to-orange-500 text-white shadow-sm text-xl font-bold">
+        <div className="max-w-6xl mx-auto px-3 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-2">
+          <div className="flex items-center gap-2 sm:gap-2.5 min-w-0">
+            <span className="flex items-center justify-center w-8 h-8 sm:w-10 sm:h-10 rounded-xl sm:rounded-2xl bg-linear-to-br from-amber-400 to-orange-500 text-white shadow-sm text-base sm:text-xl font-bold shrink-0">
               🏡
             </span>
-            <div>
-              <span className="text-lg sm:text-xl font-bold tracking-tight text-stone-900 block leading-tight">
+            <div className="min-w-0">
+              <span className="text-sm sm:text-xl font-bold tracking-tight text-stone-900 block leading-tight whitespace-nowrap truncate">
                 동대문구 생활 정보
               </span>
               <span className="text-[11px] text-amber-700 font-medium hidden sm:inline-block">
@@ -169,28 +169,28 @@ export default function Home() {
             </div>
           </div>
 
-          <nav className="flex items-center gap-2 sm:gap-4 text-sm font-medium">
+          <nav className="flex items-center gap-1 sm:gap-3 text-xs sm:text-sm font-medium shrink-0">
             <a
               href="#events"
-              className="px-3 py-1.5 rounded-full text-stone-600 hover:text-orange-600 hover:bg-orange-50 transition-colors"
+              className="px-2 sm:px-3 py-1 sm:py-1.5 rounded-full text-stone-600 hover:text-orange-600 hover:bg-orange-50 transition-colors whitespace-nowrap"
             >
-              🌸 행사·축제
+              🌸 행사<span className="hidden sm:inline">·축제</span>
             </a>
             <a
               href="#benefits"
-              className="px-3 py-1.5 rounded-full text-stone-600 hover:text-amber-600 hover:bg-amber-50 transition-colors"
+              className="px-2 sm:px-3 py-1 sm:py-1.5 rounded-full text-stone-600 hover:text-amber-600 hover:bg-amber-50 transition-colors whitespace-nowrap"
             >
-              🎁 지원금·혜택
+              🎁 혜택<span className="hidden sm:inline">·지원금</span>
             </a>
             <Link
               href="/blog"
-              className="px-3 py-1.5 rounded-full text-stone-600 hover:text-orange-600 hover:bg-orange-50 transition-colors"
+              className="px-2 sm:px-3 py-1 sm:py-1.5 rounded-full text-stone-600 hover:text-orange-600 hover:bg-orange-50 transition-colors whitespace-nowrap"
             >
               📝 블로그
             </Link>
             <Link
               href="/about"
-              className="px-3 py-1.5 rounded-full text-stone-600 hover:text-orange-600 hover:bg-orange-50 transition-colors"
+              className="px-2 sm:px-3 py-1 sm:py-1.5 rounded-full text-stone-600 hover:text-orange-600 hover:bg-orange-50 transition-colors whitespace-nowrap"
             >
               ℹ️ 소개
             </Link>
@@ -206,12 +206,12 @@ export default function Home() {
             동대문구 최신 공공데이터 연동 중
           </div>
 
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-stone-900 tracking-tight leading-tight sm:leading-snug">
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-stone-900 tracking-tight leading-tight sm:leading-snug break-keep">
             우리 동네 <span className="text-orange-600 underline decoration-amber-300 decoration-wavy decoration-2">동대문</span>의
             <br className="hidden sm:inline" /> 알찬 생활 소식을 한눈에!
           </h1>
 
-          <p className="mt-3 sm:mt-4 text-base sm:text-lg text-stone-600 max-w-2xl leading-relaxed">
+          <p className="mt-3 sm:mt-4 text-base sm:text-lg text-stone-600 max-w-2xl leading-relaxed break-keep">
             놓치면 아쉬운 이번 달 주요 문화 축제·행사 소식부터 
             꼭 챙겨야 할 청년 월세 지원 및 출산지원금 혜택까지 편리하게 확인하세요.
           </p>
@@ -344,11 +344,11 @@ export default function Home() {
                     </div>
                     <div className="flex items-start gap-2">
                       <span className="font-semibold text-stone-700 shrink-0 w-10">📍 장소</span>
-                      <span className="truncate">{item.location}</span>
+                      <span className="break-keep">{item.location}</span>
                     </div>
                     <div className="flex items-start gap-2">
                       <span className="font-semibold text-stone-700 shrink-0 w-10">👥 대상</span>
-                      <span className="truncate">{item.target}</span>
+                      <span className="break-keep">{item.target}</span>
                     </div>
                   </div>
 
@@ -486,7 +486,7 @@ export default function Home() {
                     </div>
                     <div className="flex items-start gap-2">
                       <span className="font-semibold text-stone-700 shrink-0 w-14">🏢 신청방법</span>
-                      <span className="truncate">{item.location}</span>
+                      <span className="break-keep">{item.location}</span>
                     </div>
                   </div>
 

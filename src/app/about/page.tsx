@@ -18,13 +18,13 @@ export default function AboutPage() {
     <div className="min-h-screen flex flex-col font-sans text-stone-800 bg-[#FAF7F2]">
       {/* 1. 상단 네비게이션 & 헤더 */}
       <header className="sticky top-0 z-30 bg-white/90 backdrop-blur-md border-b border-amber-100 shadow-xs">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-          <Link href="/" className="flex items-center gap-2.5 group">
-            <span className="flex items-center justify-center w-10 h-10 rounded-2xl bg-linear-to-br from-amber-400 to-orange-500 text-white shadow-sm text-xl font-bold group-hover:scale-105 transition-transform">
+        <div className="max-w-5xl mx-auto px-3 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-2">
+          <Link href="/" className="flex items-center gap-2 sm:gap-2.5 group min-w-0">
+            <span className="flex items-center justify-center w-8 h-8 sm:w-10 sm:h-10 rounded-xl sm:rounded-2xl bg-linear-to-br from-amber-400 to-orange-500 text-white shadow-sm text-base sm:text-xl font-bold group-hover:scale-105 transition-transform shrink-0">
               🏡
             </span>
-            <div>
-              <span className="text-lg sm:text-xl font-bold tracking-tight text-stone-900 block leading-tight">
+            <div className="min-w-0">
+              <span className="text-sm sm:text-xl font-bold tracking-tight text-stone-900 block leading-tight whitespace-nowrap truncate">
                 동대문구 생활 정보
               </span>
               <span className="text-[11px] text-amber-700 font-medium hidden sm:inline-block">
@@ -33,28 +33,28 @@ export default function AboutPage() {
             </div>
           </Link>
 
-          <nav className="flex items-center gap-2 sm:gap-4 text-sm font-medium">
+          <nav className="flex items-center gap-1 sm:gap-3 text-xs sm:text-sm font-medium shrink-0">
             <Link
               href="/#events"
-              className="px-3 py-1.5 rounded-full text-stone-600 hover:text-orange-600 hover:bg-orange-50 transition-colors"
+              className="px-2 sm:px-3 py-1 sm:py-1.5 rounded-full text-stone-600 hover:text-orange-600 hover:bg-orange-50 transition-colors whitespace-nowrap"
             >
-              🌸 행사·축제
+              🌸 행사<span className="hidden sm:inline">·축제</span>
             </Link>
             <Link
               href="/#benefits"
-              className="px-3 py-1.5 rounded-full text-stone-600 hover:text-amber-600 hover:bg-amber-50 transition-colors"
+              className="px-2 sm:px-3 py-1 sm:py-1.5 rounded-full text-stone-600 hover:text-amber-600 hover:bg-amber-50 transition-colors whitespace-nowrap"
             >
-              🎁 지원금·혜택
+              🎁 혜택<span className="hidden sm:inline">·지원금</span>
             </Link>
             <Link
               href="/blog"
-              className="px-3 py-1.5 rounded-full text-stone-600 hover:text-orange-600 hover:bg-orange-50 transition-colors"
+              className="px-2 sm:px-3 py-1 sm:py-1.5 rounded-full text-stone-600 hover:text-orange-600 hover:bg-orange-50 transition-colors whitespace-nowrap"
             >
               📝 블로그
             </Link>
             <Link
               href="/about"
-              className="px-3 py-1.5 rounded-full text-orange-700 bg-orange-100/70 font-bold transition-colors"
+              className="px-2 sm:px-3 py-1 sm:py-1.5 rounded-full text-orange-700 bg-orange-100/70 font-bold transition-colors whitespace-nowrap"
             >
               ℹ️ 소개
             </Link>
