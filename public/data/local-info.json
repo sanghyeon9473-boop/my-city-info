@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-09-12",
+  "lastUpdated": "2026-09-13",
   "source": "공공데이터포털 (data.go.kr)",
   "items": [
     {
@@ -137,7 +137,21 @@
       "link": "https://www.gov.kr/portal/rcvfvrSvc/dtlEx/134200000006",
       "badge": "통학비/치료비 지원",
       "url": "https://www.gov.kr/portal/rcvfvrSvc/dtlEx/134200000006"
+    },
+    {
+      "id": "135200005017",
+      "name": "한국형 상병수당 시범사업",
+      "category": "혜택",
+      "categoryLabel": "지원금/혜택",
+      "startDate": "2024-07-29",
+      "endDate": "상시",
+      "location": "국민건강보험공단",
+      "target": "시범사업 지역(서울 종로구, 경기 부천/안양/용인 등)에 거주하거나 사업장이 소재한 만 15세 이상 65세 미만의 취업자 및 자영업자. (동대문구는 시범사업 지역에 해당하지 않음)",
+      "summary": "업무 외 질병·부상으로 경제활동이 어려운 시범사업 지역 거주/근로 취업자 및 자영업자에게 일 47,560원의 상병수당을 최대 150일까지 지원합니다. (동대문구는 시범사업 지역이 아님)",
+      "link": "https://www.gov.kr/portal/rcvfvrSvc/dtlEx/135200005017",
+      "badge": "일 47,560원 상병수당",
+      "url": "https://www.gov.kr/portal/rcvfvrSvc/dtlEx/135200005017"
     }
   ],
-  "lastPageChecked": 4
+  "lastPageChecked": 5
 }
