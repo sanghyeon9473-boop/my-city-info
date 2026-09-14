@@ -1,7 +1,7 @@
 import Link from "next/link";
 
 interface HeaderProps {
-  activeNav?: "events" | "benefits" | "blog" | "about";
+  activeNav?: "events" | "benefits" | "blog" | "about" | "privacy";
 }
 
 export default function Header({ activeNav }: HeaderProps) {

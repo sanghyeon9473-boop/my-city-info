@@ -37,12 +37,15 @@ export default function Footer({
           <p>
             © {new Date().getFullYear()} 동대문구 생활 정보. 모든 공공데이터는 공공데이터포털(data.go.kr)에 의거하여 제공됩니다.
           </p>
-          <div className="flex gap-4">
+          <div className="flex flex-wrap justify-center sm:justify-start gap-4">
             <Link href="/about" className="hover:text-stone-300">
               소개
             </Link>
             <Link href="/blog" className="hover:text-stone-300">
               블로그
+            </Link>
+            <Link href="/privacy" className="hover:text-stone-300 font-medium text-stone-300">
+              개인정보처리방침
             </Link>
             <a
               href="mailto:contact@dongdaemungu.com"
