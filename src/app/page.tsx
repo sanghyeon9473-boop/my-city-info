@@ -491,8 +491,8 @@ export default function Home() {
                   </div>
 
                   {/* 버튼 */}
-                  <div className="px-6 py-4 bg-white border-t border-stone-100 flex items-center justify-between">
-                    <span className="text-xs text-amber-700 font-medium">예산 소진 시 조기 마감 가능</span>
+                  <div className="px-5 sm:px-6 py-3.5 bg-white border-t border-stone-100 flex items-center justify-between gap-2">
+                    <span className="text-[11px] sm:text-xs text-amber-700 font-medium hidden sm:inline">예산 소진 시 조기 마감 가능</span>
                     {linkInfo.isExternal ? (
                       <a
                         href={linkInfo.href}
@@ -518,6 +518,9 @@ export default function Home() {
             })}
           </div>
         </section>
+
+        {/* 혜택 섹션과 블로그 섹션 사이 광고 배너 */}
+        <AdBanner />
 
         {/* 섹션 3: 최신 블로그 & 맞춤 혜택 상세 가이드 */}
         {latestPosts.length > 0 && (
@@ -614,6 +617,9 @@ export default function Home() {
             소식 다시 둘러보기
           </a>
         </section>
+
+        {/* 푸터 직전 광고 배너 */}
+        <AdBanner />
       </main>
 
       {/* 5. 하단 푸터 */}
@@ -643,9 +649,9 @@ export default function Home() {
               © {new Date().getFullYear()} 동대문구 생활 정보. 모든 공공데이터는 공공데이터포털(data.go.kr)에 의거하여 제공됩니다.
             </p>
             <div className="flex gap-4">
-              <span className="hover:text-stone-300 cursor-pointer">이용약관</span>
-              <span className="hover:text-stone-300 cursor-pointer">개인정보처리방침</span>
-              <span className="hover:text-stone-300 cursor-pointer">문의하기</span>
+              <Link href="/about" className="hover:text-stone-300">소개</Link>
+              <Link href="/blog" className="hover:text-stone-300">블로그</Link>
+              <a href="mailto:contact@dongdaemungu.com" className="hover:text-stone-300">문의하기</a>
             </div>
           </div>
         </div>

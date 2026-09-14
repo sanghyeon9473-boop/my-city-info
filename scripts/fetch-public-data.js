@@ -68,6 +68,65 @@ function evaluateItem(item) {
   return null;
 }
 
+// [안전장치] Gemini AI 일시적 과부하(503/429 등) 발생 시 지수 백오프 기반 자동 재시도 함수
+async function callGeminiWithRetry(prompt, apiKey, maxRetries = 5, initialDelay = 3000) {
+  const models = ['gemini-2.5-flash', 'gemini-1.5-flash'];
+  let currentModelIndex = 0;
+  let delay = initialDelay;
+
+  for (let attempt = 1; attempt <= maxRetries; attempt++) {
+    const model = models[currentModelIndex];
+    const url = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${apiKey}`;
+
+    try {
+      const response = await fetch(url, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          contents: [{ parts: [{ text: prompt }] }]
+        })
+      });
+
+      if (!response.ok) {
+        const errorText = await response.text();
+        const isTemporary = [429, 500, 502, 503, 504].includes(response.status);
+        if (isTemporary && attempt < maxRetries) {
+          console.warn(`[Gemini AI ${model}] 일시적 과부하/오류 (${response.status}) 발생. ${delay / 1000}초 후 다시 시도합니다... (${attempt}/${maxRetries}회차)`);
+          await new Promise((res) => setTimeout(res, delay));
+          delay *= 2;
+          if (attempt >= 2 && currentModelIndex < models.length - 1) {
+            currentModelIndex++;
+          }
+          continue;
+        }
+        throw new Error(`Gemini API 호출 실패 (${response.status}): ${errorText}`);
+      }
+
+      const result = await response.json();
+      const text = result.candidates?.[0]?.content?.parts?.[0]?.text;
+      if (!text) {
+        if (attempt < maxRetries) {
+          console.warn(`[Gemini AI] 응답이 비어 있어 ${delay / 1000}초 후 다시 시도합니다... (${attempt}/${maxRetries}회차)`);
+          await new Promise((res) => setTimeout(res, delay));
+          delay *= 2;
+          continue;
+        }
+        throw new Error('Gemini API로부터 올바른 응답을 받지 못했습니다.');
+      }
+
+      return text;
+    } catch (err) {
+      if (attempt < maxRetries && (err.message.includes('fetch failed') || err.message.includes('network') || err.message.includes('ECONNRESET') || err.message.includes('ETIMEDOUT'))) {
+        console.warn(`[네트워크 지연] ${delay / 1000}초 후 다시 시도합니다... (${attempt}/${maxRetries}회차): ${err.message}`);
+        await new Promise((res) => setTimeout(res, delay));
+        delay *= 2;
+        continue;
+      }
+      throw err;
+    }
+  }
+}
+
 async function main() {
   const publicDataApiKey = process.env.PUBLIC_DATA_API_KEY;
   if (!publicDataApiKey) {
@@ -173,7 +232,6 @@ async function main() {
     process.exit(1);
   }
 
-  const geminiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${geminiApiKey}`;
   const prompt = `너는 동대문구 생활 정보 포털의 공공데이터 가공 전문가야.
 아래 공공데이터 1건을 분석해서 동대문구민과 서울시민이 알기 쉬운 JSON 객체로 변환해줘. 형식:
 {
@@ -197,22 +255,7 @@ ${JSON.stringify(targetCandidate, null, 2)}`;
 
   let processedItem;
   try {
-    const geminiResponse = await fetch(geminiUrl, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        contents: [{ parts: [{ text: prompt }] }]
-      })
-    });
-
-    if (!geminiResponse.ok) {
-      const errorText = await geminiResponse.text();
-      throw new Error(`Gemini API 호출 실패 (${geminiResponse.status}): ${errorText}`);
-    }
-
-    const geminiResult = await geminiResponse.json();
-    const responseText = geminiResult.candidates?.[0]?.content?.parts?.[0]?.text;
-    if (!responseText) throw new Error('올바른 응답을 받지 못했습니다.');
+    const responseText = await callGeminiWithRetry(prompt, geminiApiKey);
 
     let cleanedText = responseText.trim();
     cleanedText = cleanedText.replace(/^```(?:json)?\s*/i, '').replace(/\s*```$/i, '').trim();

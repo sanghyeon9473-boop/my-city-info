@@ -276,6 +276,9 @@ export default async function BlogPostPage({
             )}
           </div>
 
+          {/* 헤더 메타정보 아래 광고 */}
+          <AdBanner />
+
           {/* 마크다운 렌더링 영역 */}
           <div className="prose prose-stone max-w-none prose-headings:text-stone-900 prose-headings:font-bold prose-a:text-orange-600 prose-a:underline hover:prose-a:text-orange-700 prose-strong:text-stone-900 prose-blockquote:border-l-amber-400 prose-blockquote:bg-amber-50/40 prose-blockquote:py-1 prose-blockquote:px-4 prose-blockquote:rounded-r-xl leading-relaxed text-sm sm:text-base">
             <ReactMarkdown remarkPlugins={[remarkGfm]}>
@@ -354,6 +357,9 @@ export default async function BlogPostPage({
             </Link>
           </div>
         </article>
+
+        {/* 푸터 직전 광고 배너 */}
+        <AdBanner />
       </main>
 
       {/* 푸터 */}

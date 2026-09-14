@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { getAllPosts } from "@/lib/posts";
 import type { Metadata } from "next";
+import AdBanner from "@/components/AdBanner";
 
 export const metadata: Metadata = {
   title: "지원금·복지 소식 블로그 | 동대문구 생활 정보",
@@ -145,6 +146,11 @@ export default function BlogListPage() {
             ))}
           </div>
         )}
+
+        {/* 푸터 직전 광고 배너 */}
+        <div className="mt-10">
+          <AdBanner />
+        </div>
       </main>
 
       {/* 푸터 */}
