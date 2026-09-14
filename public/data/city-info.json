@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-09-14",
+  "lastUpdated": "2026-09-15",
   "source": "공공데이터포털 (data.go.kr)",
   "items": [
     {
@@ -207,7 +207,21 @@
       "link": "https://www.gov.kr/portal/rcvfvrSvc/dtlEx/137100000217",
       "badge": "광고 인재 교육 지원",
       "url": "https://www.gov.kr/portal/rcvfvrSvc/dtlEx/137100000217"
+    },
+    {
+      "id": "140000000194",
+      "name": "목재이용명예 감시원 일자리 제공",
+      "category": "혜택",
+      "categoryLabel": "지원금/혜택",
+      "startDate": "2023-10-27",
+      "endDate": "상시",
+      "location": "사업을 추진하는 지방산림청(국유림관리소)",
+      "target": "목재 제품 유통에 관심 있는 소비자·생산자 단체 회원, 비영리법인 직원 및 자원봉사자",
+      "summary": "목재감시 활동을 수행하는 자원봉사자 및 단체 회원을 대상으로 활동수당, 교육비 등을 지원하는 사업입니다. (주의: 2024년부터 예산 문제로 미운영 중입니다.)",
+      "link": "https://www.gov.kr/portal/rcvfvrSvc/dtlEx/140000000194",
+      "badge": "2024년 미운영",
+      "url": "https://www.gov.kr/portal/rcvfvrSvc/dtlEx/140000000194"
     }
   ],
-  "lastPageChecked": 6
+  "lastPageChecked": 7
 }
