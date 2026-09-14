@@ -1,5 +1,7 @@
 import Link from "next/link";
 import type { Metadata } from "next";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
   title: "소개 | 동대문구 생활 정보",
@@ -17,50 +19,7 @@ export default function AboutPage() {
   return (
     <div className="min-h-screen flex flex-col font-sans text-stone-800 bg-[#FAF7F2]">
       {/* 1. 상단 네비게이션 & 헤더 */}
-      <header className="sticky top-0 z-30 bg-white/90 backdrop-blur-md border-b border-amber-100 shadow-xs">
-        <div className="max-w-5xl mx-auto px-3 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-2">
-          <Link href="/" className="flex items-center gap-2 sm:gap-2.5 group shrink-0">
-            <span className="flex items-center justify-center w-9 h-9 sm:w-10 sm:h-10 rounded-xl sm:rounded-2xl bg-linear-to-br from-amber-400 to-orange-500 text-white shadow-sm text-lg sm:text-xl font-bold group-hover:scale-105 transition-transform">
-              🏡
-            </span>
-            <div className="hidden sm:block">
-              <span className="text-xl font-bold tracking-tight text-stone-900 block leading-tight">
-                동대문구 생활 정보
-              </span>
-              <span className="text-[11px] text-amber-700 font-medium">
-                우리 동네 맞춤 축제 &amp; 지원금 알리미
-              </span>
-            </div>
-          </Link>
-
-          <nav className="flex items-center gap-1 sm:gap-3 text-[13px] sm:text-sm font-medium">
-            <Link
-              href="/#events"
-              className="px-2 sm:px-3 py-1.5 rounded-full text-stone-600 hover:text-orange-600 hover:bg-orange-50 transition-colors whitespace-nowrap"
-            >
-              🌸 행사·축제
-            </Link>
-            <Link
-              href="/#benefits"
-              className="px-2 sm:px-3 py-1.5 rounded-full text-stone-600 hover:text-amber-600 hover:bg-amber-50 transition-colors whitespace-nowrap"
-            >
-              🎁 혜택·지원금
-            </Link>
-            <Link
-              href="/blog"
-              className="px-2 sm:px-3 py-1.5 rounded-full text-stone-600 hover:text-orange-600 hover:bg-orange-50 transition-colors whitespace-nowrap"
-            >
-              📝 블로그
-            </Link>
-            <Link
-              href="/about"
-              className="px-2 sm:px-3 py-1.5 rounded-full text-orange-700 bg-orange-100/70 font-bold transition-colors whitespace-nowrap"
-            >
-              ℹ️ 소개
-            </Link>
-          </nav>
-        </div>
-      </header>
+      <Header activeNav="about" />
 
       {/* 헤더 배너 */}
       <section className="bg-linear-to-b from-amber-100/60 via-orange-50/40 to-[#FAF7F2] py-12 sm:py-16 border-b border-amber-100/50">
@@ -207,28 +166,7 @@ export default function AboutPage() {
       </main>
 
       {/* 푸터 */}
-      <footer className="mt-auto bg-stone-900 text-stone-300 py-10 border-t border-stone-800">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pb-6 border-b border-stone-800 text-center sm:text-left">
-            <div>
-              <span className="text-base font-bold text-white block">
-                동대문구 생활 정보
-              </span>
-              <p className="text-xs text-stone-400 mt-1">
-                시민들을 위한 공공 생활 행사 및 지원 혜택 알리미 포털
-              </p>
-            </div>
-            <div className="flex gap-4 text-xs text-stone-400">
-              <Link href="/" className="hover:text-stone-300">홈으로</Link>
-              <Link href="/blog" className="hover:text-stone-300">블로그 목록</Link>
-              <Link href="/about" className="text-amber-400 font-semibold">소개</Link>
-            </div>
-          </div>
-          <p className="mt-6 text-[11px] text-stone-400 text-center sm:text-left">
-            © {new Date().getFullYear()} 동대문구 생활 정보. All rights reserved.
-          </p>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }

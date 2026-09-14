@@ -36,31 +36,6 @@ const websiteSchema = {
   description: "동대문구 주민을 위한 지역 행사, 축제, 지원금, 혜택 정보",
 };
 
-const breadcrumbSchema = {
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  itemListElement: [
-    {
-      "@type": "ListItem",
-      "position": 1,
-      "name": "홈",
-      "item": `${siteUrl}/`,
-    },
-    {
-      "@type": "ListItem",
-      "position": 2,
-      "name": "블로그",
-      "item": `${siteUrl}/blog/`,
-    },
-    {
-      "@type": "ListItem",
-      "position": 3,
-      "name": "글 제목",
-      "item": `${siteUrl}/blog/`,
-    },
-  ],
-};
-
 const adsenseId = process.env.NEXT_PUBLIC_ADSENSE_ID;
 const isAdsenseValid = Boolean(
   adsenseId && adsenseId.trim() !== "" && adsenseId.trim() !== "나중에_입력"
@@ -117,10 +92,6 @@ export default function RootLayout({
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
-        />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
         />
       </head>
       <body className="min-h-full flex flex-col bg-amber-50/40 text-stone-800 selection:bg-amber-200">

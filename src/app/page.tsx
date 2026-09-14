@@ -1,7 +1,9 @@
 import cityDataRaw from "../../public/data/city-info.json";
 import Link from "next/link";
 import AdBanner from "@/components/AdBanner";
-import { getAllPosts, PostData } from "@/lib/posts";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+import { getAllPosts } from "@/lib/posts";
 
 interface InfoItem {
   id: string | number;
@@ -93,21 +95,28 @@ export default function Home() {
   );
   const upcomingEventsCount = events.filter((item) => !item.status.isPast).length;
 
-  // 전체 블로그 포스트 가져오기
+  // 전체 블로그 포스트 가져오기 및 검색용 경량 인덱스 생성 (본문 전체 정규식 제거로 성능 최적화)
   const allPosts = getAllPosts();
   const latestPosts = allPosts.slice(0, 3); // 최신 블로그 글 3개
+
+  const postLookup = allPosts.map((post) => ({
+    slug: post.slug,
+    cleanTitle: post.title.replace(/\s+/g, ""),
+    cleanSummary: post.summary.replace(/\s+/g, ""),
+    tagsJoined: post.tags.join(" "),
+  }));
 
   // 각 아이템(행사 또는 지원금)에 연결할 가장 적합한 링크를 찾아주는 함수
   const getItemLinkInfo = (item: InfoItem) => {
     const cleanItemName = item.name.replace(/\s+/g, "");
 
-    // 1. 블로그 포스트 중 연관된 글이 있는지 탐색
-    const matchedPost = allPosts.find((post) => {
-      const cleanTitle = post.title.replace(/\s+/g, "");
-      const cleanContent = post.content.replace(/\s+/g, "");
+    // 1. 블로그 포스트 중 제목, 요약, 태그 기반으로 연관 글 고속 탐색
+    const matchedPost = postLookup.find((post) => {
       return (
-        cleanTitle.includes(cleanItemName) ||
-        cleanContent.includes(cleanItemName) ||
+        post.cleanTitle.includes(cleanItemName) ||
+        cleanItemName.includes(post.cleanTitle) ||
+        post.cleanSummary.includes(cleanItemName) ||
+        post.tagsJoined.includes(item.name) ||
         (item.name.includes("월세") && post.slug.includes("rentsupport")) ||
         (item.name.includes("미래행복통장") && post.slug.includes("nkdefector")) ||
         (item.name.includes("북한이탈주민") && post.slug.includes("nkdefector"))
@@ -153,50 +162,7 @@ export default function Home() {
   return (
     <div className="min-h-screen flex flex-col font-sans text-stone-800 bg-[#FAF7F2]">
       {/* 1. 상단 네비게이션 & 헤더 */}
-      <header className="sticky top-0 z-30 bg-white/90 backdrop-blur-md border-b border-amber-100 shadow-xs">
-        <div className="max-w-6xl mx-auto px-3 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-2">
-          <div className="flex items-center gap-2 sm:gap-2.5 shrink-0">
-            <span className="flex items-center justify-center w-9 h-9 sm:w-10 sm:h-10 rounded-xl sm:rounded-2xl bg-linear-to-br from-amber-400 to-orange-500 text-white shadow-sm text-lg sm:text-xl font-bold">
-              🏡
-            </span>
-            <div className="hidden sm:block">
-              <span className="text-xl font-bold tracking-tight text-stone-900 block leading-tight">
-                동대문구 생활 정보
-              </span>
-              <span className="text-[11px] text-amber-700 font-medium">
-                우리 동네 맞춤 축제 &amp; 지원금 알리미
-              </span>
-            </div>
-          </div>
-
-          <nav className="flex items-center gap-1 sm:gap-3 text-[13px] sm:text-sm font-medium">
-            <a
-              href="#events"
-              className="px-2 sm:px-3 py-1.5 rounded-full text-stone-600 hover:text-orange-600 hover:bg-orange-50 transition-colors whitespace-nowrap"
-            >
-              🌸 행사·축제
-            </a>
-            <a
-              href="#benefits"
-              className="px-2 sm:px-3 py-1.5 rounded-full text-stone-600 hover:text-amber-600 hover:bg-amber-50 transition-colors whitespace-nowrap"
-            >
-              🎁 혜택·지원금
-            </a>
-            <Link
-              href="/blog"
-              className="px-2 sm:px-3 py-1.5 rounded-full text-stone-600 hover:text-orange-600 hover:bg-orange-50 transition-colors whitespace-nowrap"
-            >
-              📝 블로그
-            </Link>
-            <Link
-              href="/about"
-              className="px-2 sm:px-3 py-1.5 rounded-full text-stone-600 hover:text-orange-600 hover:bg-orange-50 transition-colors whitespace-nowrap"
-            >
-              ℹ️ 소개
-            </Link>
-          </nav>
-        </div>
-      </header>
+      <Header />
 
       {/* 2. 메인 히어로 배너 */}
       <section className="relative overflow-hidden bg-linear-to-b from-amber-100/60 via-orange-50/40 to-[#FAF7F2] py-12 sm:py-16">
@@ -623,39 +589,7 @@ export default function Home() {
       </main>
 
       {/* 5. 하단 푸터 */}
-      <footer className="mt-auto bg-stone-900 text-stone-300 py-10 border-t border-stone-800">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pb-6 border-b border-stone-800 text-center sm:text-left">
-            <div>
-              <span className="text-base font-bold text-white block">
-                동대문구 생활 정보
-              </span>
-              <p className="text-xs text-stone-400 mt-1">
-                시민들을 위한 공공 생활 행사 및 지원 혜택 알리미 포털
-              </p>
-            </div>
-            <div className="text-xs text-stone-400 text-center sm:text-right space-y-1">
-              <p>
-                <span className="text-stone-300 font-medium">데이터 출처:</span> {cityData.source}
-              </p>
-              <p>
-                <span className="text-stone-300 font-medium">최종 업데이트:</span> {cityData.lastUpdated}
-              </p>
-            </div>
-          </div>
-
-          <div className="mt-6 flex flex-col sm:flex-row items-center justify-between text-[11px] text-stone-400 gap-3 text-center sm:text-left">
-            <p>
-              © {new Date().getFullYear()} 동대문구 생활 정보. 모든 공공데이터는 공공데이터포털(data.go.kr)에 의거하여 제공됩니다.
-            </p>
-            <div className="flex gap-4">
-              <Link href="/about" className="hover:text-stone-300">소개</Link>
-              <Link href="/blog" className="hover:text-stone-300">블로그</Link>
-              <a href="mailto:contact@dongdaemungu.com" className="hover:text-stone-300">문의하기</a>
-            </div>
-          </div>
-        </div>
-      </footer>
+      <Footer source={cityData.source} lastUpdated={cityData.lastUpdated} />
     </div>
   );
 }

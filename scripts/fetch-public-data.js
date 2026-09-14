@@ -292,13 +292,6 @@ ${JSON.stringify(targetCandidate, null, 2)}`;
 
     fs.writeFileSync(cityInfoPath, JSON.stringify(cityInfo, null, 2) + '\n', 'utf-8');
 
-    const localInfoPath = path.resolve(__dirname, '../public/data/local-info.json');
-    try {
-      fs.writeFileSync(localInfoPath, JSON.stringify(cityInfo, null, 2) + '\n', 'utf-8');
-    } catch (e) {
-      // ignore
-    }
-
     console.log(`성공적으로 추가되었습니다: ${processedItem.name} (다음 탐색 페이지: ${cityInfo.lastPageChecked})`);
   } catch (error) {
     console.error('데이터 저장 중 오류 발생:', error.message);
