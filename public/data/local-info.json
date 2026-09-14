@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-09-13",
+  "lastUpdated": "2026-09-14",
   "source": "공공데이터포털 (data.go.kr)",
   "items": [
     {
@@ -151,7 +151,21 @@
       "link": "https://www.gov.kr/portal/rcvfvrSvc/dtlEx/135200005017",
       "badge": "일 47,560원 상병수당",
       "url": "https://www.gov.kr/portal/rcvfvrSvc/dtlEx/135200005017"
+    },
+    {
+      "id": "137100000217",
+      "name": "글로벌 광고인재 육성",
+      "category": "혜택",
+      "categoryLabel": "지원금/혜택",
+      "startDate": "2023-10-26",
+      "endDate": "상시",
+      "location": "문화체육관광부",
+      "target": "대학생, 취업준비생, 재직자 등",
+      "summary": "대학생 등을 대상으로 실제 광고프로젝트의 실무업무를 지원하는 인재교육사업",
+      "link": "https://www.gov.kr/portal/rcvfvrSvc/dtlEx/137100000217",
+      "badge": "광고 인재 교육 지원",
+      "url": "https://www.gov.kr/portal/rcvfvrSvc/dtlEx/137100000217"
     }
   ],
-  "lastPageChecked": 5
+  "lastPageChecked": 6
 }
