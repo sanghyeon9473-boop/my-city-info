@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-09-15",
+  "lastUpdated": "2026-09-16",
   "source": "공공데이터포털 (data.go.kr)",
   "items": [
     {
@@ -221,7 +221,21 @@
       "link": "https://www.gov.kr/portal/rcvfvrSvc/dtlEx/140000000194",
       "badge": "2024년 미운영",
       "url": "https://www.gov.kr/portal/rcvfvrSvc/dtlEx/140000000194"
+    },
+    {
+      "id": "142100000015",
+      "name": "장애인 창업점포 지원사업",
+      "category": "혜택",
+      "categoryLabel": "지원금/혜택",
+      "startDate": "2023-10-27",
+      "endDate": "상시",
+      "location": "중소벤처기업부",
+      "target": "장애인 예비창업자 및 업종 전환을 희망하는 장애인 기업",
+      "summary": "부동산 임차 보증금을 최대 1억 3천만원 한도 내에서 최장 5년간 지원합니다.",
+      "link": "https://www.gov.kr/portal/rcvfvrSvc/dtlEx/142100000015",
+      "badge": "최대 1.3억 보증금 지원",
+      "url": "https://www.gov.kr/portal/rcvfvrSvc/dtlEx/142100000015"
     }
   ],
-  "lastPageChecked": 7
+  "lastPageChecked": 8
 }
