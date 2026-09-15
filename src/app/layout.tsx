@@ -23,8 +23,22 @@ export const metadata: Metadata = {
     description: "동대문구 주민을 위한 지역 행사, 축제, 지원금, 혜택 정보를 매일 업데이트합니다.",
     url: siteUrl,
     siteName: "동대문구 생활 정보",
+    images: [
+      {
+        url: `${siteUrl}/images/event-default.jpg`,
+        width: 1200,
+        height: 675,
+        alt: "동대문구 생활 정보 및 문화 행사",
+      },
+    ],
     locale: "ko_KR",
     type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "동대문구 생활 정보 | 행사·혜택·지원금 안내",
+    description: "동대문구 주민을 위한 지역 행사, 축제, 지원금, 혜택 정보를 매일 업데이트합니다.",
+    images: [`${siteUrl}/images/event-default.jpg`],
   },
 };
 

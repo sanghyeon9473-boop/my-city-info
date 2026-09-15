@@ -18,6 +18,7 @@ interface InfoItem {
   badge?: string;
   url?: string;
   link?: string;
+  image?: string;
 }
 
 interface CityData {
@@ -27,6 +28,7 @@ interface CityData {
 }
 
 const cityData = cityDataRaw as CityData;
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://dongdaemungu.com";
 
 export default function Home() {
   // 오늘 날짜 기준으로 행사 상태(D-Day, 진행 중, 행사 종료)를 계산하는 직관적인 함수
@@ -249,11 +251,41 @@ export default function Home() {
                         name: item.name,
                         startDate: item.startDate,
                         endDate: item.endDate,
+                        eventStatus: "https://schema.org/EventScheduled",
+                        eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
                         location: {
                           "@type": "Place",
                           name: item.location,
+                          address: {
+                            "@type": "PostalAddress",
+                            streetAddress: item.location,
+                            addressLocality: "동대문구",
+                            addressRegion: "서울특별시",
+                            postalCode: "02565",
+                            addressCountry: "KR",
+                          },
                         },
+                        image: [
+                          item.image
+                            ? (item.image.startsWith("http") ? item.image : `${siteUrl}${item.image}`)
+                            : `${siteUrl}/images/event-default.jpg`,
+                        ],
                         description: item.summary,
+                        offers: {
+                          "@type": "Offer",
+                          url: item.url
+                            ? (item.url.startsWith("http") ? item.url : `${siteUrl}${item.url}`)
+                            : `${siteUrl}/#events`,
+                          price: "0",
+                          priceCurrency: "KRW",
+                          availability: "https://schema.org/InStock",
+                          validFrom: item.startDate,
+                        },
+                        organizer: {
+                          "@type": "Organization",
+                          name: "서울특별시 동대문구청",
+                          url: "https://www.ddm.go.kr",
+                        },
                       }),
                     }}
                   />
